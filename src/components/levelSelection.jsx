@@ -2,6 +2,7 @@
 import React from 'react';
 import { pickLevel } from '../actions'
 import {connect} from "react-redux";
+import WordList from "./wordList";
 
 class LevelSelection extends React.Component {
 
@@ -28,17 +29,18 @@ class LevelSelection extends React.Component {
             {/*       ref={input=>_input=input}*/}
             {/*       onChange={() => this.props.selectLevel(_input.value)}/>*/}
 
-            <label>Choose a level:
+                <label>Choose a level:
 
-                <select value={this.state.value} onChange={this.handleChange}>
-                    <option value="easy">easy</option>
-                    <option value="medium">medium</option>
-                    <option value="hard">hard</option>
-                </select>
+                    <select value={this.state.value} onChange={this.handleChange}>
+                        <option value="easy">easy</option>
+                        <option value="medium">medium</option>
+                        <option value="hard">hard</option>
+                    </select>
 
-            </label>
-            <button onClick={() => this.props.selectLevel(this.state.value)}> confirm </button>
-        </div>)
+                </label>
+                <button onClick={() => this.props.selectLevel(this.state.value)}> confirm </button>
+                <WordList/>
+            </div>)
 
     }
 }
@@ -49,9 +51,6 @@ let mapDispatchToProps = function (dispatch, props) {
             dispatch(pickLevel(val))
         }
     }
-    // onClick2:(val) => {
-    //     dispatch(minusSum(val))
-    // }
 
 };
 

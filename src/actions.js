@@ -30,11 +30,10 @@ export function guessWord(wordGuessing, targetWord) {
     }
 }
 
-export function addToHistory(wordGuessing, chanceLeft) {
-    console.log('chance' + chanceLeft);
-    if(chanceLeft === C.TOTAL_CHANCES || chanceLeft === 0) {
+export function addToHistory(wordGuessing, targetWord) {
+    if(wordGuessing === targetWord) {
         return {
-            type: C.CLEAR_HISTORY
+            type: C.RESTART
         }
     } else {
         return {

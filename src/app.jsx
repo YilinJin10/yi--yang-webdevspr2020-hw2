@@ -1,6 +1,7 @@
 import React from 'react';
-import LevelSelection from './conponents/levelSelection'
-import Guess from "./conponents/guess";
+import LevelSelection from './components/levelSelection'
+import Guess from "./components/guess";
+
 
 function App () {
 
@@ -8,7 +9,6 @@ function App () {
         return (<div>
             <h1>{"Let's Play"}</h1>
             <LevelSelection/>
-            <h1></h1>
             <Guess/>
         </div>)
 

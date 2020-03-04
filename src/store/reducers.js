@@ -1,15 +1,36 @@
 import C from '../constants'
 import { combineReducers } from 'redux'
-import wordList from '../wordList.json'
 
 
 export const level = (state= null, action) => {
   if(action.type === C.PICK_LEVEL) {
     return action.payload.level
     //todo: return the correct level
+  } else if (action.type === C.RESTART) {
+    return null
   }
   return state;
 };
+
+export const wordList = (state = [], action) => {
+  if(action.type === C.PICK_LEVEL) {
+    switch (action.payload.level) {
+      case 'easy':
+        return ['a', 'b', 'c', 'd']
+        break;
+      case 'medium':
+        return ['e', 'f', 'g', 'h']
+        break;
+      case 'hard':
+        return ['i', 'j']
+      default:
+        return state;
+    }
+  } else if (action.type === C.RESTART) {
+    return []
+  }
+  return state;
+}
 
 export const chanceLeft = (state = C.TOTAL_CHANCES, action) => {
   if (action.type === C.GUESS_WORD) {
@@ -19,48 +40,70 @@ export const chanceLeft = (state = C.TOTAL_CHANCES, action) => {
       state = state - 1;
       return state
     }
+  } else if (action.type === C.RESTART) {
+    return C.TOTAL_CHANCES;
   }
   return state
 }
 
 export const targetWords = (state = '', action) => {
-  let wordListArray = JSON.parse(JSON.stringify(wordList));
+  // let wordListArray = JSON.parse(JSON.stringify(wordList));
   if (action.type === C.PICK_LEVEL) {
-    if (action.payload.level === 'easy') {
-      //state = wordListArray['easy'][1];
-      return 'b';
-    } else if (action.payload.level === 'medium') {
-      //return state = wordListArray['medium'][1];
-      return 'c';
+    switch (action.payload.level) {
+      case 'easy':
+        return 'hi'
+        break;
+      case 'medium':
+        return 'hello'
+        break;
+      case 'hard':
+        return 'great'
+      default:
+        return state;
     }
+  } else if (action.type === C.RESTART) {
+    return '';
   }
   return state;
+
 }
 
 export const guessingHistory = (state = [], action) => {
-  console.log(action.type)
     if (action.type === C.ADD_TO_HISTORY) {
       return [...state, action.payload.wordGuessing]
-    } else if (action.type === C.CLEAR_HISTORY) {
+    } else if (action.type === C.RESTART) {
       return [];
     }
 
   return state
 }
 
-export const wordGuessing = (state = '', action) => {
+export const wordGuessing = (state = null, action) => {
   if (action.type === C.GUESS_WORD) {
     return action.payload.wordGuessing
+  } else if (action.type === C.RESTART) {
+    return null;
   }
-  return state
+  return state;
 }
+
+export const restart = (state = true, action) => {
+  if (action.type === C.RESTART) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 
 export default combineReducers({
   level: level,
+  wordList: wordList,
   chanceLeft: chanceLeft,
   targetWords: targetWords,
   guessingHistory:guessingHistory,
-  wordGuessing: wordGuessing
+  wordGuessing: wordGuessing,
+  restart: restart,
 })
 
 // export const goal = (state=10, action) =>

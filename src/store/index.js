@@ -12,6 +12,7 @@ const consoleMessages = store => next => action => {
     console.log('history', store.getState().guessingHistory)
     console.log('targetWords', store.getState().targetWords)
     console.log('wordGuessing', store.getState().wordGuessing)
+    console.log('restart', store.getState().restart)
 
 
 
@@ -22,6 +23,7 @@ const consoleMessages = store => next => action => {
     let {guessingHistory} = store.getState()
     let {targetWords} = store.getState()
     let {wordGuessing} = store.getState()
+    let {restart} = store.getState()
 
     console.log(`
 
@@ -30,6 +32,7 @@ const consoleMessages = store => next => action => {
 		history: ${guessingHistory}
 		targetWords: ${targetWords}
 		wordGuessing: ${wordGuessing}
+		restart: ${restart}
 	`)
 
     console.groupEnd()

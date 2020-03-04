@@ -4,5 +4,7 @@
 	"guessingHistory": [],
 	"chanceLeft": 5,
 	"wordGuessing": null,
-	"level": null
+	"level": null,
+	"wordList": [],
+	"restart": true
 }
