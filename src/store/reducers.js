@@ -46,6 +46,13 @@ export const chanceLeft = (state = C.TOTAL_CHANCES, action) => {
   return state
 }
 
+// export const correctLocation (state = null,  action(guess, target) => {
+//   if (action.type === C.GUESS_WORD) {
+//     if position
+//   }
+//   return state;
+// }
+
 export const targetWords = (state = '', action) => {
   // let wordListArray = JSON.parse(JSON.stringify(wordList));
   if (action.type === C.PICK_LEVEL) {
@@ -74,7 +81,6 @@ export const guessingHistory = (state = [], action) => {
     } else if (action.type === C.RESTART) {
       return [];
     }
-
   return state
 }
 
