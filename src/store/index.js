@@ -12,17 +12,19 @@ const consoleMessages = store => next => action => {
     console.log('history', store.getState().guessingHistory)
     console.log('targetWords', store.getState().targetWords)
     console.log('wordGuessing', store.getState().wordGuessing)
+    console.log('correctPosition', store.getState().correctPosition)
     console.log('restart', store.getState().restart)
 
 
 
     result = next(action)
 
-    let { level} = store.getState()
+    let {level} = store.getState()
     let {chanceLeft} = store.getState()
     let {guessingHistory} = store.getState()
     let {targetWords} = store.getState()
     let {wordGuessing} = store.getState()
+    let {correctPosition} = store.getState()
     let {restart} = store.getState()
 
     console.log(`
@@ -32,6 +34,7 @@ const consoleMessages = store => next => action => {
 		history: ${guessingHistory}
 		targetWords: ${targetWords}
 		wordGuessing: ${wordGuessing}
+		correctPosition: ${correctPosition}
 		restart: ${restart}
 	`)
 

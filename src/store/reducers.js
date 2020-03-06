@@ -12,22 +12,43 @@ export const level = (state= null, action) => {
   return state;
 };
 
+// use list.random() to return a random element from the list
+Array.prototype.random = function () {
+  return this[Math.floor((Math.random()*this.length))];
+};
+
+// get word list, find a target, store as an object
 export const wordList = (state = [], action) => {
   if(action.type === C.PICK_LEVEL) {
-    switch (action.payload.level) {
-      case 'easy':
-        return ['a', 'b', 'c', 'd']
-        break;
-      case 'medium':
-        return ['e', 'f', 'g', 'h']
-        break;
-      case 'hard':
-        return ['i', 'j']
-      default:
-        return state;
-    }
+    return require('../AllLevelWordList.js').easy.list;
+    // return {
+    //         target: easyWordList.random(),
+    //         list: easyWordList
+    //       };
+    // switch (action.payload.level) {
+    //   case 'easy':
+    //     let easyWordList = require('../AllLevelWordList.js').easy.list;
+    //     return {
+    //       target: easyWordList.random(),
+    //       list: easyWordList
+    //     };
+    //   case 'medium':
+    //     let mediumWordList = require('../AllLevelWordList.js').medium.list;
+    //     return {
+    //       target: mediumWordList.random(),
+    //       list: mediumWordList
+    //     };
+    //   case 'hard':
+    //     let hardWordList = require('../AllLevelWordList.js').hard.list;
+    //     return {
+    //       target: hardWordList.random(),
+    //       list: hardWordList
+    //     };
+    //   default:
+    //     return state;
+    // }
   } else if (action.type === C.RESTART) {
-    return []
+    return {}
   }
   return state;
 }
@@ -40,12 +61,13 @@ export const chanceLeft = (state = C.TOTAL_CHANCES, action) => {
       state = state - 1;
       return state
     }
-  } else if (action.type === C.RESTART) {
+  } else if (action.type === C.RESTART || action.type === C.PICK_LEVEL) {
     return C.TOTAL_CHANCES;
   }
   return state
-}
+};
 
+// not needed anymore, target word is stored in the wordList object
 // export const correctLocation (state = null,  action(guess, target) => {
 //   if (action.type === C.GUESS_WORD) {
 //     if position
@@ -54,17 +76,17 @@ export const chanceLeft = (state = C.TOTAL_CHANCES, action) => {
 // }
 
 export const targetWords = (state = '', action) => {
-  // let wordListArray = JSON.parse(JSON.stringify(wordList));
   if (action.type === C.PICK_LEVEL) {
     switch (action.payload.level) {
       case 'easy':
-        return 'hi'
-        break;
+        let easyWordList = require('../AllLevelWordList.js').easy.list;
+        return easyWordList.random();
       case 'medium':
-        return 'hello'
-        break;
+        let mediumWordList = require('../AllLevelWordList.js').medium.list;
+        return mediumWordList[Math.floor((Math.random() * mediumWordList.length))];
       case 'hard':
-        return 'great'
+        let hardWordList = require('../AllLevelWordList.js').hard.list;
+        return hardWordList[Math.floor((Math.random() * hardWordList.length))];
       default:
         return state;
     }
@@ -72,13 +94,12 @@ export const targetWords = (state = '', action) => {
     return '';
   }
   return state;
-
 }
 
 export const guessingHistory = (state = [], action) => {
     if (action.type === C.ADD_TO_HISTORY) {
       return [...state, action.payload.wordGuessing]
-    } else if (action.type === C.RESTART) {
+    } else if (action.type === C.RESTART || action.type === C.PICK_LEVEL) {
       return [];
     }
   return state
@@ -87,7 +108,7 @@ export const guessingHistory = (state = [], action) => {
 export const wordGuessing = (state = null, action) => {
   if (action.type === C.GUESS_WORD) {
     return action.payload.wordGuessing
-  } else if (action.type === C.RESTART) {
+  } else if (action.type === C.RESTART || action.type === C.PICK_LEVEL) {
     return null;
   }
   return state;
@@ -99,8 +120,29 @@ export const restart = (state = true, action) => {
   } else {
     return false;
   }
-}
+};
 
+// helper function, return correct positions, comparing two strings
+let compare = function (guess, target) {
+  let minLength = Math.min(guess.length, target.length);
+  let correctPos = 0;
+  for (var i = 0; i < minLength; i++) {
+    if (target.charAt(i) === guess.charAt(i)) {
+      correctPos++;
+    }
+  }
+  return correctPos + " / " + target.length;
+};
+
+export const correctPosition = (state = '', action) => {
+  if (action.type === C.GUESS_WORD) {
+    let guessing = action.payload.wordGuessing;
+    let target =  action.payload.targetWord;
+    return compare(guessing, target);
+  } else {
+    return state;
+  }
+};
 
 export default combineReducers({
   level: level,
@@ -110,6 +152,7 @@ export default combineReducers({
   guessingHistory:guessingHistory,
   wordGuessing: wordGuessing,
   restart: restart,
+  correctPosition: correctPosition,
 })
 
 // export const goal = (state=10, action) =>
