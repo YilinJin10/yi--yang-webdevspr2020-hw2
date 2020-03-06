@@ -18,37 +18,40 @@ Array.prototype.random = function () {
 };
 
 // get word list, find a target, store as an object
-export const wordList = (state = [], action) => {
+export const wordList = (state = {'target': "", 'list':[]}, action) => {
   if(action.type === C.PICK_LEVEL) {
-    return require('../AllLevelWordList.js').easy.list;
+    //return require('../AllLevelWordList.js').easy.list;
     // return {
     //         target: easyWordList.random(),
     //         list: easyWordList
     //       };
-    // switch (action.payload.level) {
-    //   case 'easy':
-    //     let easyWordList = require('../AllLevelWordList.js').easy.list;
-    //     return {
-    //       target: easyWordList.random(),
-    //       list: easyWordList
-    //     };
-    //   case 'medium':
-    //     let mediumWordList = require('../AllLevelWordList.js').medium.list;
-    //     return {
-    //       target: mediumWordList.random(),
-    //       list: mediumWordList
-    //     };
-    //   case 'hard':
-    //     let hardWordList = require('../AllLevelWordList.js').hard.list;
-    //     return {
-    //       target: hardWordList.random(),
-    //       list: hardWordList
-    //     };
-    //   default:
-    //     return state;
-    // }
+    switch (action.payload.level) {
+      case 'easy':
+        let easyWordList = require('../AllLevelWordList.js').easy.list;
+        return {
+          target: easyWordList.random(),
+          list: easyWordList
+        };
+      case 'medium':
+        let mediumWordList = require('../AllLevelWordList.js').medium.list;
+        return {
+          target: mediumWordList.random(),
+          list: mediumWordList
+        };
+      case 'hard':
+        let hardWordList = require('../AllLevelWordList.js').hard.list;
+        return {
+          target: hardWordList.random(),
+          list: hardWordList
+        };
+      default:
+        return state;
+    }
   } else if (action.type === C.RESTART) {
-    return {}
+    return {
+      'target': '',
+      'list':[]
+    }
   }
   return state;
 }

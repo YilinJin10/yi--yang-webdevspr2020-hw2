@@ -1,11 +1,13 @@
 
 {
-	"targetWords": "",
 	"guessingHistory": [],
 	"chanceLeft": 5,
 	"wordGuessing": null,
 	"correctPosition": "",
 	"level": null,
-	"wordList": [],
+	"wordList": {
+		"target": "",
+		"list": []
+	},
 	"restart": true
 }

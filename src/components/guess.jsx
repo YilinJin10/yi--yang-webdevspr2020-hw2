@@ -5,6 +5,7 @@ import { addToHistory } from '../actions'
 import {connect} from "react-redux";
 import History from "./history"
 import ChanceLeft from "./chanceleft";
+import CorrectPosition from "./correctPosition";
 
 class Guess extends React.Component {
 
@@ -32,11 +33,12 @@ class Guess extends React.Component {
 
                        {/*// ref={input=>_input=input}*/}
                        {/*// onChange={() => this.props.guessWord(_input.value, this.props.chanceLeft, this.props.targetWord)}/>*/}
-                    <button onClick={() => this.props.guessWord(this.state.value, this.props.targetWord)}> confirm </button>
+                    <button onClick={() => this.props.guessWord(this.state.value, this.props.wordList['target'])}> confirm </button>
                     {/*<input type="submit" value="Submit" />*/}
                 {/*</form>*/}
                 <History/>
                 <ChanceLeft/>
+                <CorrectPosition/>
 
             </div>)
 
@@ -55,7 +57,7 @@ let mapDispatchToProps = function (dispatch, props) {
 function mapStateToProps(state, props) {
     return{
         chanceLeft: state.chanceLeft,
-        targetWord: state.targetWords,
+        wordList: state.wordList,
     }
 
 };

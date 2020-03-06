@@ -2,18 +2,17 @@ import React from 'react';
 import {connect} from "react-redux";
 
 
-class WordList extends React.Component {
+class CorrectPosition extends React.Component {
 
     render() {
-        const wordList = this.props.wordList['list'];
+
         return(
             <div>
-                <h1> Word List: </h1>
-                <ul>
-                    {wordList.map(word =>(
-                        <li key={word}>{word}</li>))}
-                </ul>
+                <h1> Correct Position: </h1>
+                <h2> {this.props.correctPosition}</h2>
+
             </div>)
+
     }
 }
 
@@ -25,7 +24,7 @@ let mapDispatchToProps = function (dispatch, props) {
 
 function mapStateToProps(state, props) {
     return {
-        wordList: state.wordList
+        correctPosition: state.correctPosition
     }
 };
 
@@ -33,4 +32,4 @@ function mapStateToProps(state, props) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(WordList)
+)(CorrectPosition)
