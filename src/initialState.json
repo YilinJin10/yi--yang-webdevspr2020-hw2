@@ -1,9 +1,10 @@
 
 {
-	"targetWords": null,
+	"targetWords": "",
 	"guessingHistory": [],
 	"chanceLeft": 5,
 	"wordGuessing": null,
+	"correctPosition": "",
 	"level": null,
 	"wordList": [],
 	"restart": true
