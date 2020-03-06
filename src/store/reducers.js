@@ -68,6 +68,13 @@ export const chanceLeft = (state = C.TOTAL_CHANCES, action) => {
 };
 
 // not needed anymore, target word is stored in the wordList object
+// export const correctLocation (state = null,  action(guess, target) => {
+//   if (action.type === C.GUESS_WORD) {
+//     if position
+//   }
+//   return state;
+// }
+
 export const targetWords = (state = '', action) => {
   if (action.type === C.PICK_LEVEL) {
     switch (action.payload.level) {
@@ -95,7 +102,6 @@ export const guessingHistory = (state = [], action) => {
     } else if (action.type === C.RESTART || action.type === C.PICK_LEVEL) {
       return [];
     }
-
   return state
 }
 
