@@ -2,7 +2,8 @@
 import React from 'react';
 import { pickLevel } from '../actions'
 import {connect} from "react-redux";
-import WordList from "./wordList";
+import {Link} from "react-router-dom";
+
 
 class LevelSelection extends React.Component {
 
@@ -38,8 +39,13 @@ class LevelSelection extends React.Component {
                     </select>
 
                 </label>
-                <button onClick={() => this.props.selectLevel(this.state.value)}> confirm </button>
-                <WordList/>
+                <Link to = '/guessing'>
+                    <button onClick={() => this.props.selectLevel(this.state.value)}> confirm </button>
+                </Link>
+
+                <Link to = '/gameRule'>
+                    <button> Game Rule </button>
+                </Link>
             </div>)
 
     }

@@ -23,10 +23,11 @@ export function pickLevel(level) {
 // 		"targetWord": store.getState()['targetWords']
 // 	}
 // })
-export function guessWord(wordGuessing, targetWord) {
-    return {
-        type: C.GUESS_WORD,
-        payload: {wordGuessing, targetWord}
+export function guessWord(wordGuessing, targetWord, chanceLeft) {
+        return {
+            type: C.GUESS_WORD,
+            payload: {wordGuessing, targetWord}
+
     }
 }
 
@@ -40,6 +41,12 @@ export function addToHistory(wordGuessing, targetWord) {
             type: C.ADD_TO_HISTORY,
             payload: {wordGuessing}
         }
+    }
+}
+
+export function restart() {
+    return {
+        type: C.RESTART
     }
 }
 

@@ -2,10 +2,14 @@
 import React from 'react';
 import { guessWord } from '../actions'
 import { addToHistory } from '../actions'
+import { restart } from '../actions'
 import {connect} from "react-redux";
 import History from "./history"
 import ChanceLeft from "./chanceleft";
 import CorrectPosition from "./correctPosition";
+import { Link } from "react-router-dom";
+import WordList from "./wordList";
+
 
 class Guess extends React.Component {
 
@@ -25,20 +29,33 @@ class Guess extends React.Component {
 
         return(
             <div>
+                {this.props.restartValue || (this.props.chanceLeft === 0) ? '' :
+                    <WordList/>
+                }
+
                 {/*<form onSubmit={this.props.guessWord(this.state.input, this.props.targetWord)}>*/}
+                {this.props.restartValue || (this.props.chanceLeft === 0) ? '' :
                     <label>Guess:
 
                         <input type="text" value={this.state.value} onChange={this.handleChange}/>
                     </label>
+                }
+                {this.props.restartValue || (this.props.chanceLeft === 0) ? '' :
+                    <button
+                        onClick={() => this.props.guessWord(this.state.value, this.props.wordList['target'],
+                            this.props.chanceLeft)}> confirm </button>
+                }
+                <Link to='/'>
+                    <button onClick={() => this.props.restart()}> Restart </button>
+                </Link>
 
-                       {/*// ref={input=>_input=input}*/}
-                       {/*// onChange={() => this.props.guessWord(_input.value, this.props.chanceLeft, this.props.targetWord)}/>*/}
-                    <button onClick={() => this.props.guessWord(this.state.value, this.props.wordList['target'])}> confirm </button>
-                    {/*<input type="submit" value="Submit" />*/}
-                {/*</form>*/}
-                <History/>
-                <ChanceLeft/>
-                <CorrectPosition/>
+                { this.props.restartValue || (this.props.chanceLeft === 0) ? '': <History/> }
+                { this.props.restartValue || (this.props.chanceLeft === 0) ? '': <ChanceLeft/> }
+                { this.props.restartValue || (this.props.chanceLeft === 0) ? '': <CorrectPosition/> }
+                { this.props.restartValue ? <h1> You Win!!</h1> : '' }
+                { (this.props.chanceLeft === 0) ? <h1> You Lose!!</h1> : ''}
+
+
 
             </div>)
 
@@ -50,6 +67,9 @@ let mapDispatchToProps = function (dispatch, props) {
         guessWord: (val, targetWord) => {
             dispatch(guessWord(val, targetWord));
             dispatch(addToHistory(val, targetWord));
+        },
+        restart: () => {
+            dispatch(restart());
         }
     }
 };
@@ -58,6 +78,7 @@ function mapStateToProps(state, props) {
     return{
         chanceLeft: state.chanceLeft,
         wordList: state.wordList,
+        restartValue: state.restart
     }
 
 };
