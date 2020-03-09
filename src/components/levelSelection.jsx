@@ -8,7 +8,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import '../css/levelSelection.css';
+import '../css/style.css';
+import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 
 
 class LevelSelection extends React.Component {
@@ -29,7 +30,7 @@ class LevelSelection extends React.Component {
     render() {
 
         return(
-            <div>
+            <div id = 'levelSelection'>
                 <Container>
                     <Row>
                         <Col sm={3}></Col>
@@ -66,9 +67,11 @@ class LevelSelection extends React.Component {
                             <Link to = '/gameRule'>
                                 <Button variant="dark" size="lg"> Game Rule </Button>
                             </Link>
+
                         </Col>
+                        <Col sm={3}></Col>
                     </Row>
-                    <Col sm={3}></Col>
+
                 </Container>
             </div>)
 

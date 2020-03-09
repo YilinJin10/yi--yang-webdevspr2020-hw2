@@ -1,0 +1,42 @@
+#gameRule {
+    text-align: left;
+    min-height: available;
+    margin-top: 100px;
+}
+
+label {
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#buttonToolBar {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img {
+
+}
+
+Row {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#levelSelection {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+
+ul {
+    font-weight: bold;
+}
