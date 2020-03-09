@@ -17,32 +17,54 @@ Array.prototype.random = function () {
   return this[Math.floor((Math.random()*this.length))];
 };
 
+// helper function, get a specific num of words for that level within the list of that level
+let getList = function (level = '', numOfWords = 0) {
+  let wordList =  require('../AllLevelWordList.js')[level].list;
+  let result = [];
+  for (let i = 0; i < numOfWords; i++) {
+    result.push(wordList.random());
+  }
+  return result;
+};
+
 // get word list, find a target, store as an object
-export const wordList = (state = {'target': "", 'list':[]}, action) => {
+export const wordList = (state = {'target': '', 'list':[]}, action) => {
   if(action.type === C.PICK_LEVEL) {
-    //return require('../AllLevelWordList.js').easy.list;
-    // return {
-    //         target: easyWordList.random(),
-    //         list: easyWordList
-    //       };
     switch (action.payload.level) {
+      case 'very_easy':
+        //let easyWordList = require('../AllLevelWordList.js').easy.list;
+        let very_easyWordList = getList('very_easy', C.VERY_EASY);
+        return {
+          target: very_easyWordList.random(),
+          list: very_easyWordList
+        };
       case 'easy':
-        let easyWordList = require('../AllLevelWordList.js').easy.list;
+        //let easyWordList = require('../AllLevelWordList.js').easy.list;
+        let easyWordList = getList('easy', C.EASY);
         return {
           target: easyWordList.random(),
           list: easyWordList
         };
-      case 'medium':
-        let mediumWordList = require('../AllLevelWordList.js').medium.list;
+      case 'average':
+        //let mediumWordList = require('../AllLevelWordList.js').medium.list;
+        let averageWordList = getList('average', C.AVERAGE);
         return {
-          target: mediumWordList.random(),
-          list: mediumWordList
+          target: averageWordList.random(),
+          list: averageWordList
         };
       case 'hard':
-        let hardWordList = require('../AllLevelWordList.js').hard.list;
+        //let hardWordList = require('../AllLevelWordList.js').hard.list;
+        let hardWordList = getList('hard', C.HARD);
         return {
           target: hardWordList.random(),
           list: hardWordList
+        };
+      case 'very_hard':
+        //let easyWordList = require('../AllLevelWordList.js').easy.list;
+        let very_hardWordList = getList('very_hard', C.VERY_HARD);
+        return {
+          target: very_hardWordList.random(),
+          list: very_hardWordList
         };
       default:
         return state;

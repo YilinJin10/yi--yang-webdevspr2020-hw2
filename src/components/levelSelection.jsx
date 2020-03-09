@@ -10,7 +10,7 @@ class LevelSelection extends React.Component {
     constructor() {
       super();
       this.state = {
-          value : 'easy'
+          value : 'very_easy'
       }
 
       this.handleChange = this.handleChange.bind(this)
@@ -33,9 +33,11 @@ class LevelSelection extends React.Component {
                 <label>Choose a level:
 
                     <select value={this.state.value} onChange={this.handleChange}>
+                        <option value="very_easy" selected>very_easy</option>
                         <option value="easy">easy</option>
-                        <option value="medium">medium</option>
+                        <option value="average">average</option>
                         <option value="hard">hard</option>
+                        <option value="very_hard">very_hard</option>
                     </select>
 
                 </label>
