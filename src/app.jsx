@@ -2,6 +2,8 @@ import React from 'react';
 import LevelSelection from './components/levelSelection'
 import Guess from "./components/guess";
 import GameRule from "./components/gameRule"
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import {
     BrowserRouter as Router,
     Route,

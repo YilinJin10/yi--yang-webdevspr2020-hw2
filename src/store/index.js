@@ -1,7 +1,7 @@
 import C from '../constants'
 import appReducer from './reducers'
 import { createStore, applyMiddleware } from 'redux'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 const consoleMessages = store => next => action => {
 
     let result
