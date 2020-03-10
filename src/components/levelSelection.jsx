@@ -9,8 +9,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import '../css/style.css';
-import ButtonToolbar from "react-bootstrap/ButtonToolbar";
-
 
 class LevelSelection extends React.Component {
 
@@ -35,7 +33,8 @@ class LevelSelection extends React.Component {
                     <Row>
                         <Col lg={3} sm={0}></Col>
                         <Col lg={6} sm={0}>
-                            <img className="img-responsive" src={'https://is3-ssl.mzstatic.com/image/thumb/Purple71/v4/81/66/ec/8166ec48-3566-ea7e-f07e-ef54e4777a81/source/512x512bb.jpg'}/>
+                            <img className="img-responsive" src={'https://is3-ssl.mzstatic.com/image/thumb/Purple71/v4/81/66/ec/8166ec48-3566-ea7e-f07e-ef54e4777a81/source/512x512bb.jpg'}
+                            width="400px"/>
                         </Col>
                         <Col lg={3} sm={0}></Col>
                     </Row>

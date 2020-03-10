@@ -1,15 +1,11 @@
 import React from 'react';
-
-
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
 import '../css/style.css';
-import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Col from "react-bootstrap/Col";
 import {Link} from "react-router-dom";
 import Row from "react-bootstrap/Row";
-import Card from "react-bootstrap/Card";
 
 const GameRule = () => {
 
@@ -65,12 +61,6 @@ const GameRule = () => {
                         </Col>
                         <Col sm={1}></Col>
                     </Row>
-
-                        {/*<ButtonToolbar id = 'buttonToolBar'>*/}
-                        {/*    <Button variant="primary">Back To Game</Button>*/}
-                        {/*    <Button variant="info" href={'https://en.wikipedia.org/wiki/Mastermind_(board_game)'}>Learn more</Button>*/}
-                        {/*</ButtonToolbar>*/}
-
                 </Container>
 
         </div>

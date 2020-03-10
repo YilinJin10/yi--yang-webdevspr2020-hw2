@@ -72,9 +72,8 @@ class Guess extends React.Component {
                         <img className="img-responsive" src={'https://thumbs.dreamstime.com/b/vector-stock-comic-explosion-bang-boom-you-win-text-comic-cartoon-bang-exsplosion-you-win-text-126376540.jpg'}/>
                         : '' }
                     { (this.props.chanceLeft === 0) ?
-                        // <img className="img-responsive" src={'https://lh3.googleusercontent.com/proxy/T6zVcSJ8Z02e2ARDZBEfHqx5QFYEIDxaPvUGm4KA-IGlCYflXEufVEXXvJjXGAPIjjjAo6vY_vBf5w-Vm8pwRqVOHZJVwUn2'}/>
-                        <img className="img-responsive" src={'https://www.tynker.com/projects/images/5c51d938cebfbd4e5e79d88f/to-lose-a-game-png-s2e16-you-lose-png-1920---to-lose-a-game-png-s2e16-you-lose-png-1920.png'}/>
-                        : ''}
+                        <div> <h1> Answer: {this.props.wordList['target']} </h1> <img className="img-responsive" src={'https://www.tynker.com/projects/images/5c51d938cebfbd4e5e79d88f/to-lose-a-game-png-s2e16-you-lose-png-1920---to-lose-a-game-png-s2e16-you-lose-png-1920.png'}/>
+                        </div>: ''}
                     <br/>
                     <Row>
 
@@ -111,9 +110,6 @@ class Guess extends React.Component {
                         </Col>
                     </Row>
                 </Container>
-
-
-
             </div>)
 
     }

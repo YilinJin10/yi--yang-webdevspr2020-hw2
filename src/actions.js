@@ -1,6 +1,4 @@
 import C from './constants'
-import {chanceLeft} from "./store/reducers";
-
 
 export function pickLevel(level) {
     return {
@@ -9,20 +7,6 @@ export function pickLevel(level) {
 	}
 }
 
-// store.dispatch({
-// 	type: C.ADD_TO_HISTORY,
-// 	payload: {
-// 		"wordGuessing": "a"
-// 	}
-// })
-
-// store.dispatch({
-// 	type: C.GUESS_WORD,
-// 	payload: {
-// 		"wordGuessing": "a",
-// 		"targetWord": store.getState()['targetWords']
-// 	}
-// })
 export function guessWord(wordGuessing, targetWord, chanceLeft) {
         return {
             type: C.GUESS_WORD,
