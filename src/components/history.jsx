@@ -8,8 +8,8 @@ class History extends React.Component {
 
         return(
             <div>
-                <h1> Guessing History: </h1>
-                <h2> {this.props.history}</h2>
+                <h2> Guessing History: </h2>
+                <h3> {this.props.history.toString()}</h3>
 
             </div>)
 

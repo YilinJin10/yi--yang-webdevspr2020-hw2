@@ -1,5 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import {Container} from "react-bootstrap";
 
 
 class WordList extends React.Component {
@@ -7,12 +10,27 @@ class WordList extends React.Component {
     render() {
         const wordList = this.props.wordList['list'];
         return(
-            <div>
-                <h1> Word List: </h1>
-                <ul>
-                    {wordList.map(word =>(
-                        <li key={word}>{word}</li>))}
-                </ul>
+            <div id = 'wordList'>
+                <Container>
+                    <Row>
+                        <Col lg={3} sm={0}></Col>
+                        <Col lg={6} sm={12}>
+                            <h1>Word List</h1>
+                        </Col>
+                        <Col lg={3} sm={0}></Col>
+                    </Row>
+
+                    <Row>
+                        <Col lg={3} sm={0}></Col>
+                        <Col lg={6} sm={12}>
+                            <ul type="none">
+                                {wordList.map(word =>(
+                                    <li key={word}>{word}</li>))}
+                            </ul>
+                        </Col>
+                        <Col lg={3} sm={0}></Col>
+                    </Row>
+                </Container>
             </div>)
     }
 }

@@ -1,0 +1,68 @@
+#gameRule {
+    text-align: left;
+    min-height: available;
+    margin-top: 100px;
+}
+
+label {
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#buttonToolBar {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img {
+    max-width: 100%;
+}
+
+Row {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#levelSelection {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+
+ul {
+    font-weight: bold;
+    padding: 0;
+}
+
+#guess {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    list-style: none;
+}
+
+#wordList {
+
+    text-align: center;
+    margin-top: 80px;
+}
+
+#wordList ul {
+    font-family: Menlo, serif;
+    font-size: x-large;
+    font-weight: normal;
+}
+
+#guess img {
+    max-height: 50%;
+    max-width: 50%;
+}

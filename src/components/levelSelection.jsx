@@ -3,6 +3,13 @@ import React from 'react';
 import { pickLevel } from '../actions'
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import '../css/style.css';
+import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 
 
 class LevelSelection extends React.Component {
@@ -10,7 +17,7 @@ class LevelSelection extends React.Component {
     constructor() {
       super();
       this.state = {
-          value : 'easy'
+          value : 'very_easy'
       }
 
       this.handleChange = this.handleChange.bind(this)
@@ -23,29 +30,49 @@ class LevelSelection extends React.Component {
     render() {
 
         return(
-            <div>
-            {/*<span>Select Level</span>*/}
+            <div id = 'levelSelection'>
+                <Container>
+                    <Row>
+                        <Col lg={3} sm={0}></Col>
+                        <Col lg={6} sm={0}>
+                            <img className="img-responsive" src={'https://is3-ssl.mzstatic.com/image/thumb/Purple71/v4/81/66/ec/8166ec48-3566-ea7e-f07e-ef54e4777a81/source/512x512bb.jpg'}/>
+                        </Col>
+                        <Col lg={3} sm={0}></Col>
+                    </Row>
+                    <Row>
+                        <Col lg={3} sm={0}></Col>
+                        <Col lg={6} sm={12}>
+                            <Form>
+                                <Form.Group controlId="exampleForm.ControlSelect1">
+                                    <Form.Label>Choose a level: </Form.Label>
+                                    <Form.Control size="lg" as="select" value={this.state.value} onChange={this.handleChange}>
+                                        <option value="very_easy">very_easy</option>
+                                        <option value="easy">easy</option>
+                                        <option value="average">average</option>
+                                        <option value="hard">hard</option>
+                                        <option value="very_hard">very_hard</option>
+                                    </Form.Control>
+                                </Form.Group>
+                            </Form>
+                        </Col>
+                        <Col lg={3} sm={0}></Col>
+                    </Row>
+                    <Row>
+                        <Col lg={3} sm={0}></Col>
+                        <Col lg={6} sm={12}>
+                            <Link to = '/guessing'>
+                                <Button Button variant="primary" size="lg" onClick={() => this.props.selectLevel(this.state.value)}> Confirm </Button>
+                            </Link>
 
-            {/*<input type="text"*/}
-            {/*       ref={input=>_input=input}*/}
-            {/*       onChange={() => this.props.selectLevel(_input.value)}/>*/}
+                            <Link to = '/gameRule'>
+                                <Button variant="dark" size="lg"> Game Rule </Button>
+                            </Link>
 
-                <label>Choose a level:
+                        </Col>
+                        <Col lg={3} sm={0}></Col>
+                    </Row>
 
-                    <select value={this.state.value} onChange={this.handleChange}>
-                        <option value="easy">easy</option>
-                        <option value="medium">medium</option>
-                        <option value="hard">hard</option>
-                    </select>
-
-                </label>
-                <Link to = '/guessing'>
-                    <button onClick={() => this.props.selectLevel(this.state.value)}> confirm </button>
-                </Link>
-
-                <Link to = '/gameRule'>
-                    <button> Game Rule </button>
-                </Link>
+                </Container>
             </div>)
 
     }
