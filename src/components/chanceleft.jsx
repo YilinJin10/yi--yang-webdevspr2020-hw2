@@ -8,8 +8,8 @@ class ChanceLeft extends React.Component {
 
         return(
             <div>
-                <h1> Remaining Chance: </h1>
-                <h2> {this.props.chances}</h2>
+                <h2> Remaining Chance: </h2>
+                <h3> {this.props.chances}</h3>
 
             </div>)
 

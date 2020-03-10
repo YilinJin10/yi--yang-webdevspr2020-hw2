@@ -33,15 +33,15 @@ class LevelSelection extends React.Component {
             <div id = 'levelSelection'>
                 <Container>
                     <Row>
-                        <Col sm={3}></Col>
-                        <Col sm={6}>
+                        <Col lg={3} sm={0}></Col>
+                        <Col lg={6} sm={0}>
                             <img className="img-responsive" src={'https://is3-ssl.mzstatic.com/image/thumb/Purple71/v4/81/66/ec/8166ec48-3566-ea7e-f07e-ef54e4777a81/source/512x512bb.jpg'}/>
                         </Col>
-                        <Col sm={3}></Col>
+                        <Col lg={3} sm={0}></Col>
                     </Row>
                     <Row>
-                        <Col sm={3}></Col>
-                        <Col sm={6}>
+                        <Col lg={3} sm={0}></Col>
+                        <Col lg={6} sm={12}>
                             <Form>
                                 <Form.Group controlId="exampleForm.ControlSelect1">
                                     <Form.Label>Choose a level: </Form.Label>
@@ -55,11 +55,11 @@ class LevelSelection extends React.Component {
                                 </Form.Group>
                             </Form>
                         </Col>
-                        <Col sm={3}></Col>
+                        <Col lg={3} sm={0}></Col>
                     </Row>
                     <Row>
-                        <Col sm={3}></Col>
-                        <Col sm={6}>
+                        <Col lg={3} sm={0}></Col>
+                        <Col lg={6} sm={12}>
                             <Link to = '/guessing'>
                                 <Button Button variant="primary" size="lg" onClick={() => this.props.selectLevel(this.state.value)}> Confirm </Button>
                             </Link>
@@ -69,7 +69,7 @@ class LevelSelection extends React.Component {
                             </Link>
 
                         </Col>
-                        <Col sm={3}></Col>
+                        <Col lg={3} sm={0}></Col>
                     </Row>
 
                 </Container>

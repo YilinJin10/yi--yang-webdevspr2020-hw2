@@ -8,8 +8,8 @@ class CorrectPosition extends React.Component {
 
         return(
             <div>
-                <h1> Correct Position: </h1>
-                <h2> {this.props.correctPosition}</h2>
+                <h2> Correct Position: </h2>
+                <h3> {this.props.correctPosition}</h3>
 
             </div>)
 
