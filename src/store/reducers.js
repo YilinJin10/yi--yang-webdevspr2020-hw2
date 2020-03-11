@@ -148,15 +148,17 @@ let compare = function (guess, target) {
       correctPos++;
     }
   }
-  return correctPos + " / " + target.length;
+  return correctPos + "/" + target.length;
 };
 
 export const correctPosition = (state = '', action) => {
   if (action.type === C.GUESS_WORD) {
     let guessing = action.payload.wordGuessing;
-    let target =  action.payload.targetWord;
+    let target = action.payload.targetWord;
     return compare(guessing, target);
-  } else {
+  } else if (action.type === C.RESTART) {
+    return ''
+  }else {
     return state;
   }
 };
